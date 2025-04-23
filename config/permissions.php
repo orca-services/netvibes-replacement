@@ -119,11 +119,11 @@ return [
                 return false;
             },
         ],
-        // All roles allowed to Pages/display
+        // Unauthenticated allowed to Start page
         [
-            'role' => '*',
-            'controller' => 'Pages',
-            'action' => 'display',
+            'controller' => 'Start',
+            'action' => 'start',
+            'bypassAuth' => true,
         ],
         // Bypass auth for DebugKit
         [
