@@ -27,6 +27,7 @@ use Cake\Http\MiddlewareQueue;
 use Cake\ORM\Locator\TableLocator;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
+use CakeDC\Users\Plugin as CakeDcUsersPlugin;
 
 /**
  * Application setup class.
@@ -47,6 +48,9 @@ class Application extends BaseApplication
     {
         // Call parent to load bootstrap from files.
         parent::bootstrap();
+
+        $this->addPlugin(CakeDcUsersPlugin::class);
+        Configure::write('Users.config', ['users']);
 
         if (PHP_SAPI !== 'cli') {
             FactoryLocator::add(

@@ -7,6 +7,10 @@
       <sourceFolder url="file://$MODULE_DIR$/tests/TestCase" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/vendor/cakephp/cakephp/tests" isTestSource="true" packagePrefix="Cake\Test\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/brick/varexporter" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/cakedc/auth" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/cakedc/users" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/cakephp/authentication" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/cakephp/authorization" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cakephp/bake" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cakephp/cakephp" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cakephp/cakephp-codesniffer" />
