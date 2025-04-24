@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Model\Entity\Dashboard;
+
 /**
  * Dashboards Controller
  *
@@ -17,8 +19,9 @@ class DashboardsController extends AppController
      */
     public function index()
     {
-        $query = $this->Dashboards->find()
-            ->contain(['Users']);
+        $user = $this->request
+            ->getAttribute('identity');
+        $query = $this->Dashboards->find()->where(['user_id' => $user->id]);
         $dashboards = $this->paginate($query);
 
         $this->set(compact('dashboards'));
@@ -44,9 +47,11 @@ class DashboardsController extends AppController
      */
     public function add()
     {
+        /** @var Dashboard $dashboard */
         $dashboard = $this->Dashboards->newEmptyEntity();
         if ($this->request->is('post')) {
             $dashboard = $this->Dashboards->patchEntity($dashboard, $this->request->getData());
+            $dashboard->user_id = $this->request->getAttribute('identity')->getIdentifier();
             if ($this->Dashboards->save($dashboard)) {
                 $this->Flash->success(__('The dashboard has been saved.'));
 
@@ -54,8 +59,7 @@ class DashboardsController extends AppController
             }
             $this->Flash->error(__('The dashboard could not be saved. Please, try again.'));
         }
-        $users = $this->Dashboards->Users->find('list', limit: 200)->all();
-        $this->set(compact('dashboard', 'users'));
+        $this->set(compact('dashboard'));
     }
 
     /**
@@ -70,6 +74,7 @@ class DashboardsController extends AppController
         $dashboard = $this->Dashboards->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $dashboard = $this->Dashboards->patchEntity($dashboard, $this->request->getData());
+            $dashboard->user_id = $this->request->getAttribute('identity')->getIdentifier();
             if ($this->Dashboards->save($dashboard)) {
                 $this->Flash->success(__('The dashboard has been saved.'));
 
@@ -77,8 +82,7 @@ class DashboardsController extends AppController
             }
             $this->Flash->error(__('The dashboard could not be saved. Please, try again.'));
         }
-        $users = $this->Dashboards->Users->find('list', limit: 200)->all();
-        $this->set(compact('dashboard', 'users'));
+        $this->set(compact('dashboard'));
     }
 
     /**

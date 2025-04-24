@@ -20,8 +20,13 @@ class DashboardsFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'users_id' => 1,
-                'name' => 'Lorem ipsum dolor sit amet',
+                'user_id' => 1,
+                'name' => 'Dashboard for user 1',
+            ],
+            [
+                'id' => 2,
+                'user_id' => 2,
+                'name' => 'Dashboard for user 2',
             ],
         ];
         parent::init();

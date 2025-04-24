@@ -19,10 +19,6 @@
             <h3><?= h($dashboard->name) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('User') ?></th>
-                    <td><?= $dashboard->hasValue('user') ? $this->Html->link($dashboard->user->username, ['controller' => 'Users', 'action' => 'view', $dashboard->user->id]) : '' ?></td>
-                </tr>
-                <tr>
                     <th><?= __('Name') ?></th>
                     <td><?= h($dashboard->name) ?></td>
                 </tr>

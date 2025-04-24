@@ -12,7 +12,6 @@
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('users_id') ?></th>
                     <th><?= $this->Paginator->sort('name') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
@@ -21,7 +20,6 @@
                 <?php foreach ($dashboards as $dashboard): ?>
                 <tr>
                     <td><?= $this->Number->format($dashboard->id) ?></td>
-                    <td><?= $dashboard->hasValue('user') ? $this->Html->link($dashboard->user->username, ['controller' => 'Users', 'action' => 'view', $dashboard->user->id]) : '' ?></td>
                     <td><?= h($dashboard->name) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $dashboard->id]) ?>

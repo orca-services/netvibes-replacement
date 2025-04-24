@@ -2,7 +2,6 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Dashboard $dashboard
- * @var \Cake\Collection\CollectionInterface|string[] $users
  */
 ?>
 <div class="row">
@@ -18,7 +17,6 @@
             <fieldset>
                 <legend><?= __('Add Dashboard') ?></legend>
                 <?php
-                    echo $this->Form->control('users_id', ['options' => $users]);
                     echo $this->Form->control('name');
                 ?>
             </fieldset>

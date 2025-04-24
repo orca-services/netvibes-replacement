@@ -6,6 +6,8 @@ namespace App\Test\TestCase\Controller;
 use App\Controller\DashboardsController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
+use CakeDC\Users\Model\Entity\User;
+use CakeDC\Users\Model\Table\UsersTable;
 
 /**
  * App\Controller\DashboardsController Test Case
@@ -34,7 +36,18 @@ class DashboardsControllerTest extends TestCase
      */
     public function testIndex(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->session([
+            'Auth' => new User([
+                'id' => 1,
+                'role' => UsersTable::ROLE_USER,
+            ]),
+        ]);
+        $this->get('/dashboards');
+
+        $dashboards =  $this->viewVariable('dashboards');
+        $this->assertCount(1, $dashboards);
+
+        $this->assertResponseOk();
     }
 
     /**
