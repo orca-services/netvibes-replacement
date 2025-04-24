@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * Dashboard Entity
  *
  * @property int $id
- * @property int $users_id
+ * @property int $user_id
  * @property string $name
  *
  * @property \CakeDC\Users\Model\Entity\User $user
@@ -26,7 +26,7 @@ class Dashboard extends Entity
      * @var array<string, bool>
      */
     protected array $_accessible = [
-        'users_id' => true,
+        'user_id' => true,
         'name' => true,
         'user' => true,
     ];

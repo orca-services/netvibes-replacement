@@ -27,7 +27,7 @@ class AddDashboardsTable extends BaseMigration
             ->update();
 
         $this->table('dashboards')
-            ->addColumn('users_id', 'integer', [
+            ->addColumn('user_id', 'integer', [
                 'default' => null,
                 'limit' => null,
                 'null' => false,
@@ -39,14 +39,14 @@ class AddDashboardsTable extends BaseMigration
                 'null' => false,
             ])
             ->addIndex(
-                $this->index('users_id')
+                $this->index('user_id')
                     ->setName('FK_dashboard_user_id_idx'),
             )
             ->create();
 
         $this->table('dashboards')
             ->addForeignKey(
-                $this->foreignKey('users_id')
+                $this->foreignKey('user_id')
                     ->setReferencedTable('users')
                     ->setReferencedColumns('id')
                     ->setOnDelete('CASCADE')
@@ -86,7 +86,7 @@ class AddDashboardsTable extends BaseMigration
     {
         $this->table('dashboards')
             ->dropForeignKey(
-                'users_id',
+                'user_id',
             )->save();
 
         $this->table('failed_password_attempts')

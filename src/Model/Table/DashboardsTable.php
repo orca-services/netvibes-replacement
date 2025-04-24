@@ -44,7 +44,7 @@ class DashboardsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->belongsTo('Users', [
-            'foreignKey' => 'users_id',
+            'foreignKey' => 'user_id',
             'joinType' => 'INNER',
             'className' => 'CakeDC/Users.Users',
         ]);
@@ -59,8 +59,9 @@ class DashboardsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->integer('users_id')
-            ->notEmptyString('users_id');
+            ->requirePresence('user_id', 'create')
+            ->integer('user_id')
+            ->notEmptyString('user_id');
 
         $validator
             ->scalar('name')
@@ -79,7 +80,7 @@ class DashboardsTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->existsIn(['users_id'], 'Users'), ['errorField' => 'users_id']);
+        $rules->add($rules->existsIn(['user_id'], 'Users'), ['errorField' => 'user_id']);
 
         return $rules;
     }
