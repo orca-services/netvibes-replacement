@@ -1,5 +1,7 @@
 <?php
 /**
+ * Dashboard Edit template
+ *
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Dashboard $dashboard
  */

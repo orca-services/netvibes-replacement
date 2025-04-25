@@ -1,5 +1,7 @@
 <?php
 /**
+ * Dashboard Index template
+ *
  * @var \App\View\AppView $this
  * @var iterable<\App\Model\Entity\Dashboard> $dashboards
  */
