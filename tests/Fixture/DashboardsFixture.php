@@ -18,11 +18,13 @@ class DashboardsFixture extends TestFixture
     public function init(): void
     {
         $this->records = [
+            // Dashboard of user 1
             [
                 'id' => 1,
                 'user_id' => 1,
                 'name' => 'Dashboard for user 1',
             ],
+            // Dashboard of user 2
             [
                 'id' => 2,
                 'user_id' => 2,
