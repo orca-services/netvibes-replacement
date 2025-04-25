@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Model\Entity\Dashboard;
+use Cake\Http\Exception\ForbiddenException;
 
 /**
  * Dashboards Controller
@@ -37,6 +38,10 @@ class DashboardsController extends AppController
     public function view($id = null)
     {
         $dashboard = $this->Dashboards->get($id, contain: ['Users']);
+        $user = $this->request->getAttribute('identity');
+        if ($user->id !== $dashboard->user_id) {
+            throw new ForbiddenException(__('You are not allowed to access this dashboard.'));
+        }
         $this->set(compact('dashboard'));
     }
 
@@ -96,6 +101,10 @@ class DashboardsController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $dashboard = $this->Dashboards->get($id);
+        $user = $this->request->getAttribute('identity');
+        if ($user->id !== $dashboard->user_id) {
+            throw new ForbiddenException(__('You are not allowed to delete this dashboard.'));
+        }
         if ($this->Dashboards->delete($dashboard)) {
             $this->Flash->success(__('The dashboard has been deleted.'));
         } else {
