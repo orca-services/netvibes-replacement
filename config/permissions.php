@@ -133,5 +133,14 @@ return [
             'action' => '*',
             'bypassAuth' => true,
         ],
+        // User role allowed to dashboards
+        [
+            'role' => UsersTable::ROLE_USER,
+            'prefix' => null,
+            'extension' => '*',
+            'plugin' => null,
+            'controller' => 'Dashboards',
+            'action' => '*',
+        ],
     ],
 ];
